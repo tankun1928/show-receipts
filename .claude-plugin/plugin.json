@@ -1,0 +1,8 @@
+{
+  "name": "show-receipts",
+  "version": "0.1.0",
+  "description": "Proof-of-done for AI coding agents: every 'tests pass' / 'fixed' / 'committed' claim must cite a recorded receipt, checked against the ledger and the real repo before the agent can stop.",
+  "author": { "name": "show-receipts contributors" },
+  "license": "MIT",
+  "keywords": ["verification", "hallucination", "proof", "evidence", "tests", "trust", "audit", "hooks", "guardrails", "agent-skills"]
+}

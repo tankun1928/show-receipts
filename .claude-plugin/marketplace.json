@@ -1,0 +1,13 @@
+{
+  "name": "show-receipts",
+  "owner": { "name": "show-receipts contributors" },
+  "plugins": [
+    {
+      "name": "show-receipts",
+      "source": "./",
+      "description": "Proof-of-done for AI coding agents: hooks record what actually ran, and a Stop hook checks every success claim against it.",
+      "version": "0.1.0",
+      "category": "productivity"
+    }
+  ]
+}
