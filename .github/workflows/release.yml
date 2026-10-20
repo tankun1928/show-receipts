@@ -4,7 +4,7 @@ name: release
 on:
   push:
     branches: [main]
-    paths: [".claude-plugin/plugin.json"]
+    paths: [".claude-plugin/plugin.json", ".github/workflows/release.yml"]
   workflow_dispatch:
 
 permissions:
