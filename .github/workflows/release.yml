@@ -1,0 +1,54 @@
+name: release
+
+# Publishes vX.Y.Z when .claude-plugin/plugin.json gets a version that has no release yet.
+on:
+  push:
+    branches: [main]
+    paths: [".claude-plugin/plugin.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test
+        run: python -m unittest discover tests
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(python -c "import json; print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          if gh release view "v$version" >/dev/null 2>&1; then
+            echo "v$version already released"; exit 0
+          fi
+          gh release create "v$version" --target "$GITHUB_SHA" --title "show-receipts v$version" --notes "$(cat <<'NOTES'
+          🧾 **show-receipts**: proof-of-done for AI coding agents.
+
+          - Hooks record every command, exit code and file edit into a hash-chained ledger (`.receipts/`)
+          - A Stop hook checks "tests pass / fixed / committed" claims against the ledger and the real repo
+          - Catches stale test runs, wrong test counts, nonexistent commits/files and invented receipt IDs
+          - `check-symbol` verifies an API exists in the installed version
+          - Works with Claude Code (plugin), Codex, Cursor, Gemini CLI (`receipts.py run` / `verify`)
+
+          **Install (Claude Code):**
+          ```
+          /plugin marketplace add tankun1928/show-receipts
+          /plugin install show-receipts@show-receipts
+          ```
+          **Any agent:** `npx skills add tankun1928/show-receipts`
+          NOTES
+          )"
+      - name: Upload .skill bundle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(python -c "import json; print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          cd skills && zip -qr ../show-receipts.skill show-receipts -x '*/__pycache__/*' && cd ..
+          gh release upload "v$version" show-receipts.skill --clobber
