@@ -51,14 +51,14 @@ You review a 5-line receipts table instead of re-running everything yourself.
 **Claude Code plugin (recommended: skill + hooks in one step)**
 
 ```text
-/plugin marketplace add OWNER/show-receipts
+/plugin marketplace add tankun1928/show-receipts
 /plugin install show-receipts@show-receipts
 ```
 
 **Skill only, via the skills CLI** (Claude Code, Codex, Cursor, Gemini CLI, OpenCode, …)
 
 ```bash
-npx skills add OWNER/show-receipts
+npx skills add tankun1928/show-receipts
 ```
 
 Then, in Claude Code, turn on the hooks for a project (or `--user` for all projects):

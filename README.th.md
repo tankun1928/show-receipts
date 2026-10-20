@@ -26,11 +26,11 @@
 ## ติดตั้ง
 
 ```text
-/plugin marketplace add OWNER/show-receipts
+/plugin marketplace add tankun1928/show-receipts
 /plugin install show-receipts@show-receipts
 ```
 
-หรือ `npx skills add OWNER/show-receipts` แล้วรัน `python3 .claude/skills/show-receipts/scripts/receipts.py install`
+หรือ `npx skills add tankun1928/show-receipts` แล้วรัน `python3 .claude/skills/show-receipts/scripts/receipts.py install`
 
 ต้องการแค่ Python 3.8+ ไม่มี dependency ไม่ส่งข้อมูลออกนอกเครื่อง
 

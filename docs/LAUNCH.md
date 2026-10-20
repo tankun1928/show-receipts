@@ -31,7 +31,7 @@ is the image shown on X, LinkedIn, Slack, Discord and Facebook when the link is 
 
 | Surface | How it gets listed | What ranks it |
 |---|---|---|
-| skills.sh / `npx skills` | automatic once someone runs `npx skills add OWNER/show-receipts` | install count (all-time and trending) |
+| skills.sh / `npx skills` | automatic once someone runs `npx skills add tankun1928/show-receipts` | install count (all-time and trending) |
 | Claude Code `/plugin` marketplaces | `.claude-plugin/marketplace.json` (already in the repo) | installs; inclusion in popular marketplaces |
 | Directory sites (claudemarketplaces.com, claudeskills.info, mcpmarket.com skills leaderboard) | most crawl GitHub topics; some take a submission form | stars, installs |
 | In-agent triggering | the `description` in `SKILL.md` | match with what the user types |
@@ -53,7 +53,7 @@ put that command first in every post.
 One-line entry (keep their format, don't oversell):
 
 ```markdown
-- [show-receipts](https://github.com/OWNER/show-receipts) - Proof-of-done: hooks record every command and exit code, and a Stop hook checks the agent's "tests pass / fixed / committed" claims against them.
+- [show-receipts](https://github.com/tankun1928/show-receipts) - Proof-of-done: hooks record every command and exit code, and a Stop hook checks the agent's "tests pass / fixed / committed" claims against them.
 ```
 
 ## 4. Launch posts
